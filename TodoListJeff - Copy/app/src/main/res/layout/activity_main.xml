@@ -23,14 +23,14 @@
         android:id="@+id/et_todo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/btn_add"
+        app:layout_constraintBottom_toTopOf="@+id/btn_add_todo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:autofillHints="Enter New Todo Task"
         android:inputType="text" />
 
     <Button
-        android:id="@+id/btn_add"
+        android:id="@+id/btn_add_todo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add Todo"

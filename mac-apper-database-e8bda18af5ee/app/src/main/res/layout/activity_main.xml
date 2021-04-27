@@ -1,119 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
+    tools:context=".MainActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_todo_items"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="12"
-        tools:context=".MainActivity">
+        app:layout_constraintBottom_toTopOf="@+id/et_todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="0dp" />
 
-    <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:layout_margin="5dp"
-            android:background="@android:color/darker_gray">
+    <EditText
+        android:id="@+id/et_todo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/btn_add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:autofillHints="Enter New Todo Task"
+        android:inputType="text" />
 
-        <TableRow>
-            <TextView
-                    android:text="User Id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1" />
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Todo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-            <EditText
 
-                    android:id="@+id/u_id"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20sp"
-                    android:layout_marginStart="20sp"
-                    android:width="150px" />
-        </TableRow>
-        <TableRow>
-            <TextView
-                    android:text="User Name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1" />
 
-            <EditText
-                    android:id="@+id/u_name"
-                    android:width="200dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:layout_marginStart="20sp"
-                    android:layout_marginLeft="20sp"/>
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                    android:text="User Email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1" />
-
-            <EditText
-                    android:id="@+id/u_email"
-                    android:width="200dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:layout_marginStart="20sp"
-                    android:layout_marginLeft="20sp" />
-        </TableRow>
-
-    </TableLayout>
-
-    <ListView
-            android:id="@+id/listView"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_margin="5dp"
-            android:layout_weight="8"
-            android:background="@android:color/holo_blue_dark"/>
-
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_margin="5dp"
-            android:weightSum="4"
-            android:background="@android:color/holo_blue_dark">
-        <Button
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:text="Save"
-                android:theme="@style/simpleButton"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:id="@+id/save_record"/>
-        <Button
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:text="View"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:theme="@style/simpleButton"
-                android:id="@+id/view_record"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:text="Update"
-                android:theme="@style/simpleButton"
-                android:id="@+id/update_record"/>
-        <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:text="Delete"
-                android:theme="@style/multicolorbutton"
-                android:id="@+id/delete_record"/>
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

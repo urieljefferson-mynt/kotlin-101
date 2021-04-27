@@ -1,4 +1,4 @@
-package ph.apper.training.valmores.database.dao
+package com.example.todolistjeff.dao
 
 import android.content.ContentValues
 import android.content.Context
@@ -6,7 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
-import ph.apper.training.valmores.database.model.TodoModelClass
+import com.example.todolistjeff.model.TodoModelClass
 
 
 class DatabaseHandler(context: Context): SQLiteOpenHelper(context,DATABASE_NAME,null,DATABASE_VERSION) {
