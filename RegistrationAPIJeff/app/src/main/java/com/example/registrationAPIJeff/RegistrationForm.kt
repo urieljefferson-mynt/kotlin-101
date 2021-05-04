@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.registration_form.*
 import kotlinx.android.synthetic.main.registration_form.view.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 
 class RegistrationForm : Fragment(R.layout.registration_form), AdapterView.OnItemSelectedListener {
@@ -31,8 +32,8 @@ class RegistrationForm : Fragment(R.layout.registration_form), AdapterView.OnIte
     lateinit var salutation: Spinner
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.registration_form, container, false)
@@ -70,23 +71,23 @@ class RegistrationForm : Fragment(R.layout.registration_form), AdapterView.OnIte
             Log.d("POST REQUEST", "${password.text.toString() == confirm_password.text.toString()}")
 
             if(password.text.toString() == confirm_password.text.toString()) {
-                val body = RequestBody.create("application/json; charset=utf-8".toMediaTypeOrNull(), jsonObjectString)
-                createUser(body)
+                val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
+                createUser(requestBody)
 
                 var mFragmentTransaction: FragmentManager = parentFragmentManager
                 mFragmentTransaction.beginTransaction().replace(R.id.fl_fragment, listItems)
-                    .addToBackStack(null).commit()
+                        .addToBackStack(null).commit()
             } else {
                 Log.d("btn_register", "Password confirmation does not match")
                 Snackbar.make(it, "Password confirmation does not match", Snackbar.LENGTH_LONG).show()
                 confirm_password.text.clear()
                 password.text.clear()
-                }
-
-
             }
-        return view
+
+
         }
+        return view
+    }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         parent?.getItemAtPosition(position)

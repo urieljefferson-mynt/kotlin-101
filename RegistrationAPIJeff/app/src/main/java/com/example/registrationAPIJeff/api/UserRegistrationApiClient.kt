@@ -16,11 +16,12 @@ object UserRegistrationApiClient {
 
     fun createUser(requestBody: RequestBody){
 
-            val retrofit = Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .build()
+        val retrofit = Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .build()
 
-            val service = retrofit.create(UserRegAPI::class.java)
+        val service = retrofit.create(UserRegAPI::class.java)
+
         CoroutineScope(Dispatchers.IO).launch {
             // Do the POST request and get response
             Log.d("POST REQUEST", "SENDING")
@@ -32,10 +33,10 @@ object UserRegistrationApiClient {
                     // Convert raw JSON to pretty JSON using GSON library
                     val gson = GsonBuilder().setPrettyPrinting().create()
                     val prettyJson = gson.toJson(
-                        JsonParser.parseString(
-                            response.body().toString()
-                               // About this thread blocking annotation : https://github.com/square/retrofit/issues/3255
-                        )
+                            JsonParser.parseString(
+                                    response.body().toString()
+                                    // About this thread blocking annotation : https://github.com/square/retrofit/issues/3255
+                            )
                     )
 
                     Log.d("Pretty Printed JSON :", prettyJson)
